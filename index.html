@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fares Hesham — Data Engineer & Data Analyst</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg-alt: #121212;
+    --card: #181818;
+    --border: #262626;
+    --text: #f5f5f5;
+    --muted: #a3a3a3;
+    --accent: #d4af37;
+    --accent-2: #f3e5ab;
+    --accent-glow: rgba(212, 175, 55, 0.25);
+    --nav-h: 70px;
+    --radius: 12px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg) !important;
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .container { width: min(1180px, 92%); margin: 0 auto; }
+
+  section {
+    padding: 100px 0;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: var(--nav-h);
+    z-index: 100;
+    background: rgba(10, 10, 10, 0.85) !important;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    transition: background .3s;
+  }
+  nav.scrolled { background: rgba(10, 10, 10, 0.98) !important; }
+
+  nav .nav-inner {
+    height: 100%;
+    display: flex; align-items: center; justify-content: space-between;
+    width: min(1180px, 92%); margin: 0 auto;
+  }
+  nav .logo {
+    font-weight: 800;
+    letter-spacing: .06em;
+    font-size: .95rem;
+    color: var(--text);
+    white-space: nowrap;
+  }
+  nav .logo span { color: var(--accent); }
+
+  nav ul {
+    display: flex; gap: 4px;
+    list-style: none;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  nav ul::-webkit-scrollbar { display: none; }
+
+  nav ul a {
+    color: var(--muted);
+    font-size: .84rem;
+    padding: 8px 13px;
+    border-radius: 8px;
+    white-space: nowrap;
+    transition: .2s;
+  }
+  nav ul a:hover { color: var(--accent); background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); text-decoration: none; }
+  nav ul a.active { color: var(--accent); background: var(--card); }
+
+  .menu-toggle {
+    display: none;
+    background: none; border: 1px solid var(--border);
+    color: var(--text); font-size: 1.3rem;
+    width: 42px; height: 38px; border-radius: 8px; cursor: pointer;
+  }
+
+  /* --- Hero / Cover Section --- */
+  #cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: calc(var(--nav-h) + 20px);
+    padding-bottom: 60px;
+    border-bottom: 1px solid var(--border);
+    background: 
+      radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.08), transparent 45%),
+      radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.05), transparent 45%),
+      #0a0a0a !important;
+  }
+
+  .hero-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .hero-text {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  .hero-avatar {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(135deg, var(--accent), transparent);
+    box-shadow: 0 0 30px var(--accent-glow);
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .hero-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+  }
+
+  #cover .pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: .75rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent-2);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    background: rgba(212, 175, 55, 0.06);
+    padding: 7px 16px;
+    border-radius: 999px;
+    margin-bottom: 24px;
+  }
+  #cover .pill .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6); }
+    70%  { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+  }
+
+  #cover h1 {
+    font-size: clamp(2.4rem, 5.5vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -.03em;
+    line-height: 1.08;
+    margin-bottom: 16px;
+  }
+  #cover h1 .accent {
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  #cover .role {
+    font-size: clamp(1.05rem, 2.4vw, 1.4rem);
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  #cover p.tagline {
+    color: var(--muted);
+    max-width: 620px;
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+  }
+  #cover .location {
+    color: var(--muted);
+    font-size: .88rem;
+    margin-bottom: 32px;
+  }
+
+  .btn-row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: .95rem;
+    border: 1px solid transparent;
+    transition: .25s;
+    cursor: pointer;
+  }
+  .btn-primary { background: var(--accent); color: #000; }
+  .btn-primary:hover { background: var(--accent-2); transform: translateY(-2px); text-decoration: none; }
+  .btn-ghost { border-color: var(--border); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); text-decoration: none; }
+
+  /* --- Pipeline Section --- */
+  .pipeline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    background: var(--bg-alt);
+    padding: 18px 24px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    margin-top: 20px;
+  }
+
+  .pipe-step {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .pipe-step .num {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(212, 175, 55, 0.15);
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    border: 1px solid var(--accent);
+    transition: all 0.3s ease;
+  }
+
+  .pipe-step:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-3px);
+    background: rgba(212, 175, 55, 0.05);
+  }
+
+  .pipe-step:hover .num {
+    background: var(--accent);
+    color: #000;
+  }
+
+  h2.section-title {
+    font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+    font-weight: 800;
+    margin-bottom: 16px;
+    padding-left: 18px;
+    position: relative;
+    letter-spacing: -.02em;
+  }
+  h2.section-title::before {
+    content: "";
+    position: absolute; left: 0; top: 8px;
+    width: 5px; height: 36px;
+    background: linear-gradient(180deg, var(--accent), var(--accent-2));
+    border-radius: 4px;
+  }
+  .section-sub {
+    color: var(--muted);
+    font-size: .98rem;
+    max-width: 720px;
+    margin-bottom: 46px;
+  }
+
+  #about .big-statement {
+    font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 30px;
+    color: var(--text);
+    max-width: 900px;
+  }
+  #about .big-statement span { color: var(--accent); }
+  #about p { color: var(--muted); margin-bottom: 18px; max-width: 820px; font-size: 1rem; }
+  #about strong { color: var(--text); }
+
+  .about-highlights {
+    display: flex; flex-wrap: wrap; gap: 12px;
+    margin-top: 32px;
+  }
+  .highlight {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: .88rem;
+    color: var(--muted);
+  }
+  .highlight b { color: var(--text); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 22px;
+  }
+  .skill-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    transition: .25s;
+  }
+  .skill-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .skill-card h3 {
+    font-size: .84rem;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .skill-card h3 .bar {
+    width: 24px; height: 2px;
+    background: var(--accent-2);
+    border-radius: 2px;
+  }
+  .skill-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 11px 0;
+    border-bottom: 1px dashed var(--border);
+    font-size: .92rem;
+  }
+  .skill-item:last-child { border-bottom: none; }
+  .skill-item .name { color: var(--text); font-weight: 600; }
+  .skill-item .level {
+    font-size: .78rem;
+    color: var(--accent-2);
+    background: rgba(212, 175, 55, 0.08);
+    padding: 3px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+  }
+
+  .timeline { position: relative; padding-left: 30px; }
+  .timeline::before {
+    content: "";
+    position: absolute; left: 8px; top: 8px; bottom: 8px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent), var(--accent-2));
+    opacity: .4;
+  }
+  .tl-item {
+    position: relative;
+    padding: 22px 0 22px 6px;
+  }
+  .tl-item::before {
+    content: "";
+    position: absolute;
+    left: -30px; top: 30px;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 3px solid var(--accent);
+  }
+  .tl-item .date {
+    font-size: .8rem;
+    color: var(--accent-2);
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .tl-item h3 { font-size: 1.1rem; margin-bottom: 4px; }
+  .tl-item .inst { color: var(--accent); font-size: .9rem; margin-bottom: 10px; }
+  .tl-item ul { list-style: none; display: grid; gap: 6px; }
+  .tl-item li {
+    color: var(--muted); font-size: .9rem;
+    padding-left: 18px; position: relative;
+  }
+  .tl-item li::before {
+    content: "▹"; position: absolute; left: 0; color: var(--accent-2);
+  }
+
+  .exp-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-bottom: 20px;
+    transition: .25s;
+  }
+  .exp-item:hover { border-color: var(--accent); }
+  .exp-item h3 { font-size: 1.1rem; }
+  .exp-item .meta { font-size: .85rem; color: var(--accent-2); margin: 6px 0 18px; font-weight: 600; }
+  .exp-item ul { list-style: none; display: grid; gap: 10px; }
+  .exp-item li {
+    color: var(--muted); font-size: .93rem;
+    padding-left: 22px; position: relative;
+  }
+  .exp-item li::before {
+    content: "▹"; position: absolute; left: 0;
+    color: var(--accent); font-weight: 700;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+  }
+  .service {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    transition: .25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service::after {
+    content: "";
+    position: absolute; left: 0; bottom: 0;
+    width: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    transition: width .35s;
+  }
+  .service:hover::after { width: 100%; }
+  .service:hover { transform: translateY(-6px); border-color: var(--accent); }
+  .service .num {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+    opacity: .3;
+    line-height: 1;
+    margin-bottom: 14px;
+  }
+  .service h3 { font-size: 1.05rem; margin-bottom: 10px; }
+  .service p { color: var(--muted); font-size: .9rem; }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .project {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 30px;
+    display: flex; flex-direction: column;
+    transition: .25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .project::before {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .35s;
+  }
+  .project:hover::before { transform: scaleX(1); }
+  .project:hover { transform: translateY(-6px); border-color: var(--accent-2); }
+  .project h3 { font-size: 1.15rem; margin-bottom: 8px; }
+  .project .stack {
+    font-size: .78rem; color: var(--accent);
+    margin-bottom: 16px; letter-spacing: .06em; font-weight: 600;
+  }
+  .project p { color: var(--muted); font-size: .92rem; margin-bottom: 18px; }
+  .project ul { list-style: none; display: grid; gap: 9px; margin-bottom: 22px; }
+  .project li {
+    color: var(--muted); font-size: .88rem;
+    padding-left: 20px; position: relative;
+  }
+  .project li::before {
+    content: "•"; position: absolute; left: 5px; color: var(--accent-2);
+  }
+  .project .link {
+    margin-top: auto;
+    font-size: .9rem; font-weight: 700;
+    color: var(--accent-2);
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .project .link:hover { color: var(--accent); text-decoration: none; }
+
+  .ach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .ach {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 26px;
+    transition: .25s;
+  }
+  .ach:hover { border-color: var(--accent-2); transform: translateY(-4px); }
+  .ach h3 { font-size: .98rem; margin-bottom: 8px; }
+  .ach p { color: var(--muted); font-size: .87rem; }
+  .ach .score { color: var(--accent-2); font-weight: 800; }
+
+  #contact {
+    text-align: center;
+    background:
+      radial-gradient(circle at 50% 100%, rgba(212, 175, 55, 0.1), transparent 60%);
+  }
+  #contact .cta-label {
+    font-size: .78rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent-2);
+    margin-bottom: 18px;
+  }
+  #contact h2 {
+    font-size: clamp(1.7rem, 4vw, 2.6rem);
+    font-weight: 800;
+    margin-bottom: 18px;
+    line-height: 1.2;
+  }
+  #contact p {
+    color: var(--muted);
+    max-width: 600px;
+    margin: 0 auto 36px;
+    font-size: 1rem;
+  }
+  .contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.contact-links a {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 20px 30px;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  color: var(--text);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 120px;
+}
+
+.contact-links a .icon {
+  font-size: 1.8rem;
+  color: var(--accent);
+  transition: transform 0.3s ease;
+}
+
+.contact-links a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px var(--accent-glow);
+  text-decoration: none;
+}
+
+.contact-links a:hover .icon {
+  transform: scale(1.15);
+}
+
+  footer {
+    text-align: center;
+    padding: 34px 0;
+    font-size: .83rem;
+    color: var(--muted);
+  }
+
+  #toTop {
+    position: fixed; right: 24px; bottom: 24px;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #000;
+    border: none; cursor: pointer;
+    font-size: 1.2rem; font-weight: 800;
+    display: grid; place-items: center;
+    opacity: 0; pointer-events: none;
+    transition: .3s;
+    box-shadow: 0 8px 24px rgba(0,0,0,.4);
+    z-index: 99;
+  }
+  #toTop.show { opacity: 1; pointer-events: auto; }
+  #toTop:hover { background: var(--accent-2); }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(36px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* Media Queries Responsive */
+  @media (max-width: 860px) {
+    .hero-wrapper {
+      flex-direction: column-reverse;
+      text-align: center;
+      gap: 30px;
+    }
+    .hero-avatar {
+      width: 220px;
+      height: 220px;
+    }
+    .btn-row {
+      justify-content: center;
+    }
+    .menu-toggle { display: grid; place-items: center; }
+
+    nav ul {
+      position: fixed;
+      top: var(--nav-h); left: 0; right: 0;
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+      flex-direction: column;
+      gap: 0;
+      padding: 10px 0;
+      max-height: 0; overflow: hidden;
+      transition: max-height .35s ease;
+    }
+    nav ul.open { max-height: 70vh; overflow-y: auto; }
+    nav ul a { display: block; padding: 14px 24px; border-radius: 0; }
+
+    section { padding: 70px 0; }
+    .timeline { padding-left: 24px; }
+  }
+</style>
+</head>
+
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="logo">FARES<span>.</span></div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+    <ul id="navList">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section id="cover">
+  <div class="container reveal">
+    
+    <div class="hero-wrapper">
+      <div class="hero-text">
+        <div class="pill"><span class="dot"></span> Open for new opportunities</div>
+        <h1>Fares Hesham<br /><span class="accent">Mohammed</span></h1>
+        <div class="role">Data Engineer &amp; Data Analyst</div>
+        <p class="tagline">
+          I turn messy, unstructured data into clean pipelines and clear dashboards
+          that help teams make faster, smarter decisions.
+        </p>
+        <div class="location">📍 Alexandria, Egypt</div>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="#projects">View My Work</a>
+          <a class="btn btn-ghost" href="#contact">Hire Me</a>
+        </div>
+      </div>
+
+      <div class="hero-avatar">
+        <img src="assets/profile.jpeg" alt="Fares Hesham">
+      </div>
+    </div>
+
+    <div class="pipeline">
+      <div class="pipe-step"><span class="num">1</span> Ingest</div>
+      <div class="pipe-step"><span class="num">2</span> Clean</div>
+      <div class="pipe-step"><span class="num">3</span> Transform</div>
+      <div class="pipe-step"><span class="num">4</span> Analyze</div>
+      <div class="pipe-step"><span class="num">5</span> Visualize</div>
+      <div class="pipe-step"><span class="num">6</span> Insight</div>
+    </div>
+
+  </div>
+</section>
+
+<section id="about">
+  <div class="container reveal">
+    <h2 class="section-title">About Me</h2>
+    <p class="big-statement">
+      Built for pipelines that outlive the analyst who built them.
+    </p>
+    <p>
+      I'm a <strong>Data Engineer &amp; Data Analyst</strong>.
+      I specialize in building lightweight, Python-driven ETL workflows and clean
+      SQL transformations that scale with a team instead of becoming its next bottleneck.
+    </p>
+    <p>
+      I'm currently studying Computer and Data Science at Alexandria University, and I've
+      completed intensive training through NTI, ITIDA, AWS Academy, and DEPI.
+      What drives me is the moment a messy dataset turns into a clear, useful insight.
+    </p>
+    <div class="about-highlights">
+      <div class="highlight"><b>Python</b> · <b>SQL</b> — Core languages</div>
+      <div class="highlight"><b>Power BI</b> &amp; Excel — Dashboards</div>
+      <div class="highlight"><b>ETL</b> &amp; Data Cleaning</div>
+      <div class="highlight"><b>Machine Learning</b> — Basics</div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container reveal">
+    <h2 class="section-title">The Stack Behind the Pipeline</h2>
+    <p class="section-sub">Tools and technologies I use to clean, transform, and deliver data.</p>
+
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <h3><span class="bar"></span> Languages</h3>
+        <div class="skill-item"><span class="name">Python</span><span class="level">Proficient</span></div>
+        <div class="skill-item"><span class="name">SQL</span><span class="level">Proficient</span></div>
+        <div class="skill-item"><span class="name">Arabic</span><span class="level">Native</span></div>
+        <div class="skill-item"><span class="name">English</span><span class="level">Very Good</span></div>
+      </div>
+
+      <div class="skill-card">
+        <h3><span class="bar"></span> Data &amp; Cloud</h3>
+        <div class="skill-item"><span class="name">Power BI</span><span class="level">Proficient</span></div>
+        <div class="skill-item"><span class="name">Power Query</span><span class="level">Proficient</span></div>
+        <div class="skill-item"><span class="name">Excel</span><span class="level">Proficient</span></div>
+        <div class="skill-item"><span class="name">Relational Databases</span><span class="level">Working</span></div>
+        <div class="skill-item"><span class="name">AWS Cloud Foundations</span><span class="level">Certified</span></div>
+      </div>
+
+      <div class="skill-card">
+        <h3><span class="bar"></span> ML &amp; Practices</h3>
+        <div class="skill-item"><span class="name">Machine Learning</span><span class="level">Working</span></div>
+        <div class="skill-item"><span class="name">ETL</span><span class="level">Working</span></div>
+        <div class="skill-item"><span class="name">Data Cleaning</span><span class="level">Proficient</span></div>
+        <div class="skill-item"><span class="name">Data Visualization</span><span class="level">Proficient</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="container reveal">
+    <h2 class="section-title">Education &amp; Certificates</h2>
+    <p class="section-sub">Degrees, certifications, and intensive training programs.</p>
+
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="date">2024 – 2028</div>
+        <h3>Bachelor of Computer and Data Science</h3>
+        <div class="inst">Alexandria University</div>
+        <ul>
+          <li>Core studies in programming, data structures, and databases.</li>
+          <li>Focus on data science and analytics foundations.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="date">July 2026 – August 2026</div>
+        <h3>Advanced Data Analytics — NTI &amp; ITIDA</h3>
+        <div class="inst">National Telecommunication Institute × ITIDA</div>
+        <ul>
+          <li>120 hours (90 technical + 30 freelancing).</li>
+          <li>Covered Excel, Power BI, SQL, Machine Learning, and Python.</li>
+          <li>Final score: 100%.</li>
+        </ul>
+        <a href="assets/certs/nti_cert.png" target="_blank" style="display: inline-block; margin-top: 10px; color: var(--accent); font-size: 0.85rem; font-weight: 600;">
+    📄 View Certificate →
+  </a>
+      </div>
+
+      <div class="tl-item">
+        <div class="date">July 2026 – Present</div>
+        <h3>Microsoft Data Engineer Track</h3>
+        <div class="inst">DEPI — Digital Egypt Pioneers Initiative</div>
+        <ul>
+          <li>Ongoing track covering Python and SQL for data engineering.</li>
+          <li>Hands-on work on ETL concepts and relational database design.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="date">Issued 25/04/2026</div>
+        <h3>AWS Academy — Cloud Foundations</h3>
+        <div class="inst">Amazon Web Services · 20 Hours</div>
+        <ul>
+          <li>Cloud fundamentals, AWS core services, and architecture basics.</li>
+        </ul>
+        <a href="assets/certs/aws_cert.png" target="_blank" style="display: inline-block; margin-top: 10px; color: var(--accent); font-size: 0.85rem; font-weight: 600;">
+    📄 View Certificate →
+  </a>
+      </div>
+
+      <div class="tl-item">
+        <div class="date">Completed 29/08/2026</div>
+        <h3>Database Fundamentals</h3>
+        <div class="inst">ITI Mahara-Tech Platform</div>
+        <ul>
+          <li>Relational database concepts, design, and SQL fundamentals.</li>
+        </ul>
+        <a href="assets/certs/iti_cert.png" target="_blank" style="display: inline-block; margin-top: 10px; color: var(--accent); font-size: 0.85rem; font-weight: 600;">
+    📄 View Certificate →
+  </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container reveal">
+    <h2 class="section-title">Work Experience</h2>
+    <p class="section-sub">Hands-on training and practical data work.</p>
+
+    <div class="exp-item">
+      <h3>Data Analytics Trainee</h3>
+      <div class="meta">NTI × ITIDA — Advanced Data Analytics Program · 2026</div>
+      <ul>
+        <li>Completed 120 hours of intensive training in data analytics and freelancing.</li>
+        <li>Built dashboards and reports using Power BI, Power Query, and Excel.</li>
+        <li>Applied Python and SQL to clean, transform, and analyze real datasets.</li>
+        <li>Finished the program with a final score of 100%.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <h3>Data Engineer Trainee</h3>
+      <div class="meta">DEPI — Microsoft Data Engineer Track · 2026 – Present</div>
+      <ul>
+        <li>Currently training on Python and SQL for data engineering workflows.</li>
+        <li>Working on ETL concepts, data pipelines, and relational database design.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section id="services">
+  <div class="container reveal">
+    <h2 class="section-title">What I Can Build For You</h2>
+    <p class="section-sub">Services I offer to help teams get value from their data.</p>
+
+    <div class="services-grid">
+
+      <div class="service">
+        <div class="num">01</div>
+        <h3>Data Cleaning &amp; ETL</h3>
+        <p>Turning messy raw data into clean, structured, analysis-ready datasets using Python and SQL.</p>
+      </div>
+
+      <div class="service">
+        <div class="num">02</div>
+        <h3>Dashboard &amp; Visualization</h3>
+        <p>Interactive Power BI and Excel dashboards that make KPIs and trends easy to understand.</p>
+      </div>
+
+      <div class="service">
+        <div class="num">03</div>
+        <h3>SQL &amp; Database Work</h3>
+        <p>Writing queries, designing relational schemas, and preparing data for reporting.</p>
+      </div>
+
+      <div class="service">
+        <div class="num">04</div>
+        <h3>Machine Learning Models</h3>
+        <p>Building simple ML models to support prediction and data-driven decisions.</p>
+      </div>
+
+      <div class="service">
+        <div class="num">05</div>
+        <h3>Data Analysis &amp; Reporting</h3>
+        <p>Exploratory analysis, KPI tracking, and clear reports that highlight what matters.</p>
+      </div>
+
+      <div class="service">
+        <div class="num">06</div>
+        <h3>Data Pipeline Support</h3>
+        <p>Helping build and maintain pipelines that move and transform data reliably.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container reveal">
+    <h2 class="section-title">Projects</h2>
+    <p class="section-sub">A selection of hands-on data projects I've built.</p>
+
+    <div class="projects-grid">
+
+      <div class="project">
+        <h3>YouTube Data Analysis</h3>
+        <div class="stack">Python · Data Analysis · Visualization</div>
+        <p>Analyzed engagement, views, and sentiment trends across YouTube content.</p>
+        <ul>
+          <li>Cleaned and preprocessed raw YouTube dataset using Python.</li>
+          <li>Analyzed engagement metrics and calculated sentiment trends.</li>
+          <li>Created clear visual charts to highlight top-performing categories.</li>
+        </ul>
+        <a class="link" href="https://github.com/fareshisham576-lgtm/YouTube-Sentiment-Analysis" target="_blank">View Project →</a>
+      </div>
+
+      <div class="project">
+        <h3>PM Analytics Dashboard</h3>
+        <div class="stack">Excel · Data Analysis · Dashboard</div>
+        <p>Processed and cleaned raw project management data to calculate cost variances and KPI metrics.</p>
+        <ul>
+          <li>Cleaned raw project data in Excel and calculated delay days and cost variances.</li>
+          <li>Evaluated actual vs. planned costs alongside department task completion status.</li>
+          <li>Built an interactive dashboard to track overall team performance and metrics.</li>
+        </ul>
+        <a class="link" href="https://github.com/fareshisham576-lgtm/PM-Analysis" target="_blank">View Project →</a>
+      </div>
+
+      <div class="project">
+        <h3>HealthCare Visits Analysis</h3>
+        <div class="stack">Power BI · Data Modeling · Healthcare Analytics</div>
+        <p>Analyzed operational and financial healthcare data evaluating visits, revenue, and patient stays.</p>
+        <ul>
+          <li>Tracked over $92M in total revenue and 23.8K patient visits using Power BI.</li>
+          <li>Analyzed department financial performance and patient stay durations.</li>
+          <li>Developed a multi-page interactive dashboard covering department and patient insights.</li>
+        </ul>
+        <a class="link" href="https://github.com/fareshisham576-lgtm/HealthCare_Visits_Analysis" target="_blank">View Project →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="achievements">
+  <div class="container reveal">
+    <h2 class="section-title">Achievements</h2>
+    <p class="section-sub">Milestones and recognitions throughout my learning journey.</p>
+
+    <div class="ach-grid">
+      <div class="ach">
+        <h3>NTI × ITIDA Analytics Program</h3>
+        <p>Graduated with a perfect final score of <span class="score">100%</span> after completing 120 intensive training hours.</p>
+      </div>
+
+      <div class="ach">
+        <h3>AWS Certified Cloud Foundations</h3>
+        <p>Successfully completed 20 hours of training on AWS core infrastructure, security, and cloud architecture.</p>
+      </div>
+
+      <div class="ach">
+        <h3>DEPI Professional Track Candidate</h3>
+        <p>Selected for Round 5 of the Digital Egypt Pioneers Initiative in the Microsoft Data Engineer track.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container reveal">
+    <div class="cta-label">Get In Touch</div>
+    <h2>Let's build reliable data<br />pipelines together.</h2>
+    <p>
+      Whether you need an ETL workflow, a clean Power BI dashboard, or an analyst to tackle messy datasets, I'm open for freelance and full-time opportunities.
+    </p>
+
+    <div class="contact-links">
+      <a href="mailto:fareshisham576@gmail.com"><i class="fa-solid fa-envelope icon"></i><span>Email Me</span></a>
+      <a href="https://github.com/fareshisham576-lgtm" target="_blank"><i class="fa-brands fa-github icon"></i><span>GitHub</span></a>
+      <a href="https://www.linkedin.com/in/fares-hisham-a862a1375?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank"><i class="fa-brands fa-linkedin-in icon"></i><span>LinkedIn</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 Fares Hesham Mohammed. Built with clean HTML &amp; CSS.</p>
+  </div>
+</footer>
+
+<button id="toTop" aria-label="Back to top">↑</button>
+
+<script>
+  // Mobile Navigation Toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const navList = document.getElementById('navList');
+
+  menuToggle.addEventListener('click', () => {
+    navList.classList.toggle('open');
+  });
+
+  // Close mobile nav when clicking a link
+  document.querySelectorAll('#navList a').forEach(link => {
+    link.addEventListener('click', () => {
+      navList.classList.remove('open');
+    });
+  });
+
+  // Navbar background change on scroll
+  const navbar = document.getElementById('navbar');
+  const toTop = document.getElementById('toTop');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+
+    if (window.scrollY > 400) {
+      toTop.classList.add('show');
+    } else {
+      toTop.classList.remove('show');
+    }
+  });
+
+  // Back to top button
+  toTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Scroll Reveal Animation
+  const observerOptions = {
+    threshold: 0.15
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
