@@ -401,6 +401,24 @@
     content: "▹"; position: absolute; left: 0; color: var(--accent-2);
   }
 
+  .tl-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  }
+
+  .tl-logo {
+  width: 300px;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+  }
+
+  .tl-details {
+  flex: 1;
+  }
+
   .exp-item {
     background: var(--card);
     border: 1px solid var(--border);
@@ -802,12 +820,17 @@
     <div class="timeline">
 
       <div class="tl-item">
-        <h3>Bachelor of Computer and Data Science</h3>
-        <div class="inst">Alexandria University</div>
-        <ul>
-          <li>Core studies in programming, data structures, and databases.</li>
-          <li>Focus on data science and analytics foundations.</li>
-        </ul>
+       <div class="tl-content">
+         <div class="tl-details">
+           <h3>Bachelor of Computer and Data Science</h3>
+           <div class="inst">Alexandria University</div>
+           <ul>
+            <li>Core studies in programming, data structures, and databases.</li>
+            <li>Focus on data science and analytics foundations.</li>
+           </ul>
+         </div>
+         <img src="assets/FCDS.jpeg" alt="Alexandria University Logo" class="tl-logo" />
+        </div>
       </div>
 
       <div class="tl-item">
